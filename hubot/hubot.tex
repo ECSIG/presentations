@@ -1,0 +1,135 @@
+% hubot.tex
+\documentclass{beamer}
+\usetheme[hideothersubsections,height=6mm]{Berkeley}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage[ascii]{inputenc}
+\usepackage{hyperref}
+\usepackage{examplep}
+
+
+\title{Hubot}
+\subtitle{Node.js IRC bot}
+\author{Chris Sims}
+\date{3 Dec, 2012}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+
+%-------------Coffeescript------------%
+\section{Coffeescript primer}
+
+\begin{frame}{Sample}
+  Coffeescript is a language that compiles to Javascript.  It tends to be
+  quite a bit more concise.
+
+  \begin{columns}[c]
+    \column{0.4\textwidth}
+      { \tiny
+      \input{coffee}
+      }
+    \column{0.6\textwidth}
+      { \tiny
+      \input{js}
+      }
+    \end{columns}
+
+\end{frame}
+
+%-------------Node.js-----------------%
+\section{Node.js basics}
+
+\begin{frame}{What is it?}
+  \begin{itemize}
+     \item Node is a software framework that allows you to write server-side applications
+  in Javascript.
+
+  \item Supposed to provide performant, asynchronous I/O in an easy-to-use package.
+
+  \item Hubot was likely implemented on top of this because Coffeescript has been
+  the \emph{hot thing} lately.
+
+  \end{itemize}
+
+  \end{frame}
+
+  \begin{frame}{Hello World!}
+
+  This simple example (pulled from \url{http://nodejs.org}) notifies the host OS
+  that it wants to listen on a given address and port, and defines a callback for
+  all requests.  In this case, it returns \texttt{Hello World}.
+
+  \vspace{0.1\textheight}
+
+  { \tiny
+    \centering
+  \input{node}
+  }
+
+
+\end{frame}
+
+%------------Project structure---------%
+\section{Project structure}
+
+\begin{frame}{The project}
+  \begin{columns}[c]
+  \column{0.4\textwidth}
+    \includegraphics[width=\textwidth]{tree.png}
+  \column{0.6\textwidth}
+    \begin{itemize}
+      \item Most everything is pulled in as dependencies by NPM
+      (Node Package Manager)
+      \item Scripts can be pulled in by listing them in \texttt{hubot-scripts.json}
+      \item \texttt{hubot} itself is pulled in as a dependency
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+%-----------Main class---------%
+\section{Main class}
+
+\begin{frame}{robot.coffee}
+Methods of note:
+\begin{itemize}
+  \item \texttt{hear} - attempts to match words within a sentence
+  \item \texttt{respond} - attempts to respond to directed requests
+  \item \texttt{enter/leave} - performs action when a user enters/leaves the room
+  \item \texttt{reply} - sends the built reply to the adaptor to handle
+\end{itemize}
+
+
+\end{frame}
+
+%------------Sample plugin-------------%
+\section{Practical}
+
+\begin{frame}{Build a plugin}
+
+Steps to add a simple plugin:
+\begin{enumerate}
+  \item Fork and clone \texttt{jcsims/hubot}
+  \pause
+  \item Create a topic branch - \texttt{git branch branchname}
+  \pause
+  \item Find a plugin that's close, copy and modify as needed
+  \pause
+  \item Commit changes, push to github
+  \pause
+  \item Initiate a pull request
+  \pause
+  \item Profit!!!
+\end{enumerate}
+
+\end{frame}
+
+
+\end{document}
