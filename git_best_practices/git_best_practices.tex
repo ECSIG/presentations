@@ -1,0 +1,137 @@
+% git_best_practices.tex
+\documentclass{beamer}
+\usetheme[hideothersubsections,height=6mm]{Berkeley}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{color}
+\usepackage[ascii]{inputenc}
+\usepackage{hyperref}
+
+
+\title{Git Best Practices}
+\subtitle{Tips and Tricks}
+\author{Chris Sims}
+\institute{Engineering and Computer Science Interest Group \\
+           URI Student ACM Chapter}
+\date{6 March 2013}
+\logo{\includegraphics[height=1cm]{logo_simple.png}}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+
+\section{The Commit Message}
+\begin{frame}{The Unofficial Standard}
+  Your commit message should communicate your work:
+  \footnote{More details here:
+  \href{http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html}
+  {http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html}}
+
+  \texttt{Capitalized, short (50 chars or less) summary}\\
+  \vfill
+  \texttt{More detailed explanatory text, if necessary.  Wrap it to about 72
+    characters or so.  In some contexts, the first line is treated as the
+    subject of an email and the rest of the text as the body.  The blank
+    line separating the summary from the body is critical (unless you omit
+    the body entirely); tools like rebase can get confused if you run the
+    two together.
+  }
+
+\end{frame}
+
+
+\section{Commit Early, Commit Often}
+\begin{frame}\frametitle{Commit Early, Commit Often}
+\begin{itemize}
+  \item Commits and branches are cheap - use them!
+  \item Smaller commits allow for separating chunks of work, making later
+        debugging or regression fixing easier
+  \item \texttt{git} has functionality that allows you to condense commits that
+        you've made
+  \item A commit history with more discrete commits allows other contributors to
+        better understand the work completed (Implement feature A vs. all the
+        steps to get there)
+\end{itemize}
+
+\end{frame}
+
+
+\section{Know Your History}
+
+\begin{frame}{Backtracking}
+  \texttt{git} has a wealth of tools available to recover past work. Some
+  examples:
+  \begin{itemize}
+    \item \texttt{git log}: Review commits in the repository
+    \item \texttt{git reflog}: tracks all actions taken in the repository
+    \item Restore an older version of a file:
+          \texttt{git checkout SHA -- path/to/filename}
+    \item Revert an entire commit (undo changes):
+          \texttt{git revert SHA}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Changing History}
+  Be careful rewriting history - generally the answer is never do this if this
+  history is shared with others. Rewriting history that has been shared with
+  others will often cause them to lose their work. If you haven't pushed your
+  commits, there are some tools available:
+  \begin{itemize}
+    \item \texttt{git commit --amend}: Forgot to add something to that last
+          commit, or typo in the commit message? This adds to the previous
+          commit.
+    \item \texttt{git pull --rebase}: Replays your commits on top of what you
+          pull. This keeps a generally linear history, and avoids merge commits.
+  \end{itemize}
+
+
+\end{frame}
+
+\section{Choose a Workflow}
+\begin{frame}{Choose a Workflow}
+  Pick a general workflow for things like adding features, fixing bugs, etc.
+  Some general ideas:
+  \begin{itemize}
+    \item Feature branches: take your work for a new feature into a branch, so
+          that others can continue work in other areas. Pull changes from
+          working branch to stay up-to-date.
+    \item Keep \texttt{master} at the latest stable release, with a \texttt{dev}
+          branch for the latest.
+    \item Take a look at established workflows like \texttt{git-flow}
+          \footnote{\href{http://nvie.com/posts/a-successful-git-branching-model/}
+          {http://nvie.com/posts/a-successful-git-branching-model/}}
+          or Pro Git branching models
+          \footnote{\href{http://git-scm.com/book/ch3-4.html}
+          {http://git-scm.com/book/ch3-4.html}}
+  \end{itemize}
+
+\end{frame}
+
+
+
+\section{Final Tips}
+\begin{frame}{Final Tips}
+\begin{itemize}
+  \item \texttt{git stash} should be part of your toolkit -
+        \texttt{man git-stash}
+  \item Not quite sure about commands, or feeling nervous? Make an actual backup
+        of your files and the \texttt{.git} directory, so you can restore if you
+        mess it up.
+  \item Read the manual! There is documentation all over the place, and the Pro
+        Git book
+        \footnote{\href{http://git-scm.com/book/}{http://git-scm.com/book/}}
+        is an outstanding resource.
+  \item Practice! Even if your repository never leaves your machine, you can
+        still practice your git workflow and the various commands.
+\end{itemize}
+
+
+\end{frame}
+
+\end{document}
