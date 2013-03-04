@@ -50,10 +50,13 @@
 \begin{frame}\frametitle{Commit Early, Commit Often}
 \begin{itemize}
   \item Commits and branches are cheap - use them!
+  \pause
   \item Smaller commits allow for separating chunks of work, making later
         debugging or regression fixing easier
+  \pause
   \item \texttt{git} has functionality that allows you to condense commits that
         you've made
+  \pause
   \item A commit history with more discrete commits allows other contributors to
         better understand the work completed (Implement feature A vs. all the
         steps to get there)
@@ -69,9 +72,12 @@
   examples:
   \begin{itemize}
     \item \texttt{git log}: Review commits in the repository
+    \pause
     \item \texttt{git reflog}: tracks all actions taken in the repository
+    \pause
     \item Restore an older version of a file:
           \texttt{git checkout SHA -- path/to/filename}
+    \pause
     \item Revert an entire commit (undo changes):
           \texttt{git revert SHA}
   \end{itemize}
@@ -97,12 +103,15 @@
 \begin{frame}{Choose a Workflow}
   Pick a general workflow for things like adding features, fixing bugs, etc.
   Some general ideas:
+  \pause
   \begin{itemize}
     \item Feature branches: take your work for a new feature into a branch, so
           that others can continue work in other areas. Pull changes from
           working branch to stay up-to-date.
+    \pause
     \item Keep \texttt{master} at the latest stable release, with a \texttt{dev}
           branch for the latest.
+    \pause
     \item Take a look at established workflows like \texttt{git-flow}
           \footnote{\href{http://nvie.com/posts/a-successful-git-branching-model/}
           {http://nvie.com/posts/a-successful-git-branching-model/}}
@@ -120,13 +129,16 @@
 \begin{itemize}
   \item \texttt{git stash} should be part of your toolkit -
         \texttt{man git-stash}
+  \pause
   \item Not quite sure about commands, or feeling nervous? Make an actual backup
         of your files and the \texttt{.git} directory, so you can restore if you
         mess it up.
+  \pause
   \item Read the manual! There is documentation all over the place, and the Pro
         Git book
         \footnote{\href{http://git-scm.com/book/}{http://git-scm.com/book/}}
         is an outstanding resource.
+  \pause
   \item Practice! Even if your repository never leaves your machine, you can
         still practice your git workflow and the various commands.
 \end{itemize}
