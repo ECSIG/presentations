@@ -1,0 +1,10 @@
+# Tested with Ruby 1.9
+# Needs gem "guard" (https://github.com/guard/guard)
+# Needs gem "guard-shell" (https://github.com/guard/guard-shell)
+# Uses process "pdflatex" from standard TeXLive distribution
+
+guard 'shell' do
+  watch(%r{(.+)\.tex}) do |m|
+    `pdflatex -interaction=batchmode #{m[0]} >/dev/null`
+  end
+end
