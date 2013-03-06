@@ -10,7 +10,6 @@
 
 
 \title{Git Use Cases}
-\subtitle{Subtitle? pft...}
 \author{Jake Tobak}
 \institute{Engineering and Computer Science Interest Group \\
            URI Student ACM Chapter}
@@ -76,11 +75,11 @@
 \begin{frame}{Restore Previous Version (cont.)}
 \begin{itemize}
   \item The Git Way\\
-        \textbf{git commit} and \textbf{git push} every time you make a significant change. Then \textbf{git log} and \textbf{git checkout} to revert to a previous version.
+        \textbf{add} files to your staging area and then \textbf{commit} that  every time you want to create a "save point". \textbf{push} when you have working changes you want to upload to the server. You can check the \textbf{log} to see your history and then \textbf{checkout} to revert to a previous version.
   \pause
   \item Why?\\
-        \textbf{git commit} stages all the changes you made to your code since the last update and lets you give a brief explanation of what has changed since then. \textbf{git push} uploads the staged changes to your git server.\\
-        \textbf{git log} allows you to view your previous commits with an explanation of what you did in each one. You can use \textbf{git checkout} to download a copy of a specific version to your computer.
+        \textbf{add} adds files to your staging area, \textbf{commit} creates a checkpoint from your staging area and lets you give a brief explanation of what has changed since the last commit. \textbf{push} uploads the \textbf{commit} to your git server.\\
+        The \textbf{log} allows you to view your previous commits with an explanation of what you did in each one. You can use \textbf{checkout} to start working at that specific point in the history.
   \end{itemize}
   
 
@@ -139,16 +138,16 @@
   \begin{itemize}
     \item The Wrong Way\\
             I would hope that you would know better than to not use Git by now, but there are wrong ways to use Git too.\\
-            Just continue with business as usual using Git.
+            Pushing too often.
     \pause
     \item Why?\\
-            If you're adding a new feature or something big, you might need to \textbf{commit} and \textbf{push} multiple times before your code is working perfectly again. If anyone does a \textbf{pull} before you're done, they'll have incomplete code merged into their source and it'll cause a lot of headaches. It's also possible that you only \textbf{push} working code, but maybe someone had a better solution that your team will go with instead and you'll just be competing against each other every time you \textbf{push}.
+            If you're adding a new feature or something big, you might need to \textbf{commit} multiple times, but if you \textbf{push} before your code is working perfectly again, anyone who does a \textbf{pull} before you're done will have incomplete code merged into their source and it'll cause a lot of headaches. It's also possible that you only \textbf{push} working code, but maybe someone had a better solution that your team will go with instead and you'll just be competing against each other every time you \textbf{push}.
           \end{itemize}
           \end{frame}
 \begin{frame}{Making Radical Changes}
   \begin{itemize}
     \item The Git Way\\
-            \textbf{branch}! You can use \textbf{git branch} to create a new \textbf{branch}. A \textbf{branch} is a chain of \textbf{commits} that diverges from the current history. When you \textbf{push} to a new \textbf{branch}, it won't be merged when someone \textbf{pulls} from the original. When you're satisfied with your code, you can \textbf{pull} your code from the new \textbf{branch} into the original and Git will attempt to \textbf{merge} everything for you.
+            \textbf{branch}! You can create a new \textbf{branch}, which is a chain of \textbf{commits} that diverges from the current history. When you \textbf{push} to a new \textbf{branch}, it won't be merged when someone \textbf{pulls} from the original. When you're satisfied with your code, you can \textbf{pull} your code from the new \textbf{branch} into the original and Git will attempt to \textbf{merge} everything for you.
   \end{itemize}
 \end{frame}
 
@@ -157,14 +156,14 @@
 \begin{frame}{Contributing to Open Source}
   Open Source Projects are Multi Developer Projects, but you don't have write access! How can you contribute while having read-only permission?\\
     \pause
-  The solution is \textbf{git clone}. When you \textbf{clone}, you are creating a copy of the \textbf{repository} (repo) that includes all the code, history and branches, but this copy belongs to you and you can do whatever you want with it. \textbf{commits} you make will be completely independent of the original source. \textbf{forking} is GitHub's version of \textbf{clone}, but it creates the repo under your GitHub account.
+  The solution is \textbf{clone}. When you \textbf{clone}, you are creating a copy of the \textbf{repository} (repo) that includes all the code, history and branches, but this copy belongs to you and you can do whatever you want with it. \textbf{commits} you make will be completely independent of the original source. \textbf{forking} is GitHub's version of \textbf{clone}, but it creates the repo under your GitHub account.
 \end{frame}
 
 \begin{frame}{Contributing to Open Source (cont.)}
   Okay, so now you can edit the code, but you're still doing it in your own \textbf{repo}. The original project is unaware of your changes, so what good are ya?\\
   
   \pause
-  The solution is \textbf{git request-pull}. \textbf{request-pull} generates a summary of the changes you made and a URL to find them. You can then post this to a mailing list or send it to the person incharge of the original project. If they like what they see, they can \textbf{pull} from your code and \textbf{merge} it into the original project. You can also generate a \textbf{patch} that is a list of the changes between your version and the original version, which they might prefer.
+  The solution is \textbf{request-pull}. \textbf{request-pull} generates a summary of the changes you made and a URL to find them. You can then post this to a mailing list or send it to the person incharge of the original project. If they like what they see, they can \textbf{pull} from your code and \textbf{merge} it into the original project. You can also generate a \textbf{patch} that is a list of the changes between your version and the original version, which they might prefer.
   \end{frame}
   \begin{frame}{Contributing to Open Source (cont.)}
   Another solution is GitHub's \textbf{Pull Request}. It's similar to the native \textbf{request-pull} and \textbf{patch} process, but it's much more interactive and can be managed from a web interface. If an Open Source Project is hosted on GitHub, then this is probably how they want you submit your changes.
