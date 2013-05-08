@@ -1,7 +1,7 @@
 ECSIG Presentations
 =============
 
-This repository is designed to keep the various presentations that been
+This repository is designed to keep the various presentations that have been
 given in the Engineering and Computer Science Interest Group, in source
 form.
 
