@@ -1,0 +1,197 @@
+% emacs.tex
+\PassOptionsToPackage{usenames,dvipsnames}{xcolor}
+\documentclass{beamer}
+\usetheme[hideothersubsections,height=6mm]{Berkeley}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\usetikzlibrary{arrows,automata}
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+% For faster processing, load LaTeX syntax for listings
+\lstloadlanguages{[LaTeX]TeX}%
+\lstset{language=[LaTeX]TeX, frame=single, basicstyle=\small\ttfamily,
+  keywordstyle=[1]\color{Blue}\bf, keywordstyle=[2]\color{Purple},
+  keywordstyle=[3]\color{Blue}\underbar, identifierstyle=,
+  commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+  stringstyle=\color{Purple}, showstringspaces=false, tabsize=5,
+  % Put standard LaTeX macros not included in the default
+  % language here
+  morekeywords={},
+  % Put LaTeX macro parameters here
+  morekeywords=[2]{},
+  % Put user defined macros here
+  morekeywords=[3]{}, morecomment=[l][\color{Blue}]{...},
+  numbers=left, firstnumber=1, numberstyle=\tiny\color{Blue},
+  stepnumber=5 }
+
+\title{GNU Emacs}
+\subtitle{The extensible, customizable editor}
+\author{Chris Sims \\ chris@jcsi.ms}
+\date{8 Oct 2013}
+
+\begin{document}
+\lstset{language=[LaTeX]TeX}
+\frame{\titlepage}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+
+% -------------Why?------------%
+\section{Why Not an IDE?}
+\begin{frame}
+  \frametitle{Why Emacs?}  GNU Emacs was originally written in 1984 by
+  Richard Stallman, with origins dating back to 1976 in MIT's AI Lab.
+  \begin{itemize}
+  \item decades of work and refinement
+  \item extensive help system and information online
+  \item first-class plugin support
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ok, So Why Not Vim or Sublime Text?}
+
+  These are both great choices, but Emacs has:
+  \begin{itemize}
+  \item an integrated package manager
+  \item proper subprocess support
+  \item vast amount of packages available for almost any application
+  \end{itemize}
+
+\end{frame}
+
+\section{Common Terminology}
+\begin{frame}
+  \frametitle{Basics}
+  Terms:
+  \begin{description}
+  \item[\texttt{C-h t}] Hold down Control, hit {\tt h} then release, and then
+    hit {\tt t}.
+  \item[buffer] representation of a file or other resource
+  \item[window] view on a particular buffer
+  \item[mode] 1 major, {\tt n} minor modes define methods,
+    redefine keybindings, and provide syntax highlighting (among
+    other things)
+  \end{description}
+  Some things to remember:
+  \begin{itemize}
+  \item everything is a function ({\tt M-x})
+  \item there are numerous help facilities to remind the user of functions,
+    modes, variables, etc
+  \end{itemize}
+\end{frame}
+
+\section{Getting Help}
+\begin{frame}
+  \frametitle{Immediate Help}
+  \begin{description}
+  \item[{\tt C-h t}] Emacs tutorial
+  \item[{\tt C-h k}] help on a specific keybinding
+  \item[{\tt C-h m}] docs on current modes
+  \item[{\tt C-h f}] function docstring
+  \item[{\tt C-h v}] help on a variable (including its current value)
+  \item[{\tt C-h ?}] help (on the help system)
+  \end{description}
+\end{frame}
+\begin{frame}
+  \frametitle{Longer-Term Help}
+
+  \begin{itemize}
+  \item The Emacs Manual: {\tt C-h r}
+  \item \url{http://emacswiki.org}: Chaotic, be cautious of
+    outdated/wrong information
+  \item {\tt .emacs}: Looking through other configurations can be
+    quite fruitful
+  \item Emacs reference cards: \url{http://www.gnu.org/software/emacs/refcards/index.html}
+  \item Ask me!
+  \end{itemize}
+\end{frame}
+\section{Extending Emacs}
+\begin{frame}
+  \frametitle{Plugins}
+  {\tt package.el} was included in Emacs, starting with Emacs 24. It
+  allows for installing packages (plugins) from a repository archive.
+  \begin{description}
+  \item[{\tt package-list-packages}] refresh repositories, list all
+    available and installed packages
+  \item[{\tt package-install}] install a specified package
+  \end{description}
+  \begin{block}{Adding Repositories}
+    Marmalade and MELPA are two of the most diverse package
+    repositories. MELPA builds from github source on a regular basis,
+    and is your best source for new packages.
+  \end{block}
+\end{frame}
+
+\section{Examples}
+\begin{frame}
+  \frametitle{\LaTeX}
+  \begin{itemize}
+  \item Auc\TeX\ is the definitive Emacs package for writing \LaTeX
+  \item it's available in most package managers and from Emacs 24+
+  \item Demo!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Alternative Buffers}
+  Buffers can be something other than just a view into a file
+  \begin{itemize}
+  \item terminal ({\tt eshell, shell})
+  \item functional buffers ({\tt magit, dired})
+  \item IRC ({\tt erc})
+  \item REPL ({\tt R, nrepl})
+  \end{itemize}
+  Demo!
+\end{frame}
+\begin{frame}
+  \frametitle{Org Mode}
+  Org Mode is, at its simplest, an outlining tool.
+
+  \begin{quote}
+    ``Org-mode does outlining, note-taking, hyperlinks, spreadsheets,
+    TODO lists, project planning, GTD, HTML and LaTeX authoring, all
+    with plain text files in Emacs.'' --- Carsten Dominik, author Org
+    Mode
+  \end{quote}
+  I use it for outlining, and keeping track of what I need to get done
+  with the agenda.
+  \vfill
+  Demo!
+\end{frame}
+\begin{frame}
+  \frametitle{My {\tt .emacs.d}}
+  \begin{itemize}
+  \item In newer versions of Emacs, the {\tt .emacs.d} directory (normally
+  located at {\tt \textasciitilde/emacs.d}) contains the configuration (and package
+  files) for Emacs.
+  \item I use a fair number of packages, and have split some of the
+  configuration out from {\tt init.el} into separate topical init
+  files.
+  \item Demo!
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Questions?}
+  \begin{center}
+  {\large Questions?} \\
+  \vfill
+  {\large Thanks!}
+  \end{center}
+\end{frame}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
