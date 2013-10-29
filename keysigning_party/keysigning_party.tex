@@ -1,0 +1,70 @@
+% internship.tex
+\documentclass{beamer}
+\usetheme[hideothersubsections,height=6mm]{Berkeley}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{color}
+\usepackage[ascii]{inputenc}
+\usepackage{hyperref}
+
+
+\title{Public Key Signing}
+\subtitle{Developing a web of trust for encrypting messages}
+\author{Greg Gardner, Chris Sims}
+\date{28 October 2013}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%\begin{frame}{Outline}
+%  \tableofcontents
+%\end{frame}
+
+\section{PGP}
+\begin{frame}{What is Public Key Encryption?}
+  PKE is asymetrical, meaning that the same message will never be encrypted the same way twice.
+  \begin{itemize}
+  \item Confidentiality: encipher using public key, decipher using private key
+  \item Integrity/authentication: encipher using private key, decipher using public one
+  \item Symmetric Key distribution
+  \item It is computationally infeasible for an opponent knowing only the public key to determine the private key.
+It is computationally infeasible for an oponent knowing the public key and a ciphertext to recover the original message.
+  \end{itemize}
+  
+  \begin{block}{Public Key}
+  a key that everyone can see
+  \end{block}
+  \begin{block}{Private Key}
+  a key that ONLY YOU can see
+  \end{block}
+\end{frame}
+
+\section{Steps}
+\begin{frame}\frametitle{Steps}
+  \begin{enumerate}
+    \item generate key keypair
+    \item encrypt a message your recipient's public key.
+    \item decrypt a message using your private key
+  \end{enumerate}
+\end{frame}
+
+\section{Public Key Infrastructure}
+\begin{frame}\frametitle{What is PKI?}
+	An {\bf infrastructure} of people, servers, policies, and procedures for the management of {\bf certificates}.
+	
+	\begin{itemize}
+		\item proves you aren't a phony
+		\item many methods for certification
+	\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Certification}
+  	\begin{itemize} 
+		\item Certificate Authorities
+		\item Validation Authorities
+		\item \textbf{Web of Trust}
+	\end{itemize}
+
+	\end{frame}
+\end{document}
